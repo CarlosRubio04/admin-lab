@@ -1,0 +1,57 @@
+@import "../variables";
+@import "../mixins";
+
+.cal-event-title {
+	color: $white-color;
+	font-size: 12px;
+	font-weight: 400;
+
+	&:hover {
+		color: $white-color;
+	}
+}
+.cal-week-view .cal-events-row {
+	height: 40px !important;
+}
+.cal-week-view .cal-ends-within-week .cal-event {
+	overflow: visible;
+    text-overflow: initial;
+    white-space: normal;
+    height: auto;
+    min-height: 40px;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 0 !important;
+    border-bottom: 2px solid $white-color !important;
+    transition: all .5s ease-in-out;
+    &:hover {
+    	background-color: $dxc-blue !important;
+    }
+}
+.directivos {
+
+}
+
+.modal-footer {
+	padding: 1em;
+}
+.modal-header {
+	background-color: $dxc-orange;
+}
+.modal-title {
+	color: $white-color !important;
+	text-align: left !important;
+	font-weight: 700;
+}
+.modal-body {
+	padding: 16px !important;
+	p {
+		color: $dxc-blue;
+		font-weight: 100;
+	}
+	b {
+		color: $dxc-red;
+		font-weight: 600;
+		font-size: 13px;
+	}
+}

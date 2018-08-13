@@ -1,0 +1,13 @@
+@import '../../../assets/sass/app-kit/_variables.scss';
+@import '../../../assets/sass/app-kit/_mixins.scss';
+
+.footer {
+	background-image: url(../../../assets/img/map-footer.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	transition: all 1s ease-in-out;
+	h4, p, a{
+		margin-top: 0;
+		color: $white-color;
+	}
+}

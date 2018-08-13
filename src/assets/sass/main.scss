@@ -1,0 +1,41 @@
+@import "app-kit/variables";
+@import "app-kit/mixins";
+
+@import "app-kit/typography";
+
+// Core CSS
+@import "app-kit/misc";
+@import "app-kit/buttons";
+@import "app-kit/inputs";
+@import "app-kit/progress-bars";
+@import "app-kit/sliders";
+@import "app-kit/alerts";
+@import "app-kit/labels";
+@import "app-kit/tooltips-and-popovers";
+@import "app-kit/sections";
+@import "app-kit/checkbox-radio";
+@import "app-kit/navbars";
+@import "app-kit/images";
+@import "app-kit/cards";
+@import "app-kit/footers";
+
+
+// Bootstrap Switch
+@import "app-kit/bootstrap-switch";
+
+// Fancy Stuff
+@import "app-kit/dropdown";
+//
+// icons
+@import "app-kit/icons";
+//
+@import "app-kit/tabs-navs-pagination";
+@import "app-kit/collapse";
+@import "app-kit/carousel";
+@import "app-kit/modal";
+//
+@import "app-kit/responsive";
+@import "app-kit/plugins/datetimepicker";
+@import "app-kit/plugins/calendar";
+@import "app-kit/social-buttons";
+@import "app-kit/_animations";

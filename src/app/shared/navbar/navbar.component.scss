@@ -1,0 +1,33 @@
+@import '../../../assets/sass/app-kit/_variables.scss';
+@import '../../../assets/sass/app-kit/_mixins.scss';
+
+.navbar-brand {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	img {
+		max-width: 100%;
+	}
+	span {
+		text-transform: initial;
+		margin: 0 2em 0 4em;
+		color: $white-color !important;
+	}
+}
+
+.hidden-xs {
+	display: block;
+
+	@include for-phone-only {
+		display: none;
+	}
+}
+
+.hidden-md {
+	display: none;
+
+	@include for-phone-only {
+		display: block;
+	}
+}

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48.96 80.86">
+    <defs>
+        <style>.cls-1,.cls-12,.cls-2{fill:none;}.cls-1{clip-rule:evenodd;}.cls-3{clip-path:url(#clip-path);}.cls-4{clip-path:url(#clip-path-2);}.cls-5{fill:#fbb03f;}.cls-6{clip-path:url(#clip-path-3);}.cls-7{isolation:isolate;}.cls-8{clip-path:url(#clip-path-5);}.cls-9{clip-path:url(#clip-path-6);}.cls-10{fill:#fff;}.cls-11{clip-path:url(#clip-path-8);}.cls-12{stroke:#fbb03f;stroke-miterlimit:10;stroke-width:2px;}.cls-13{clip-path:url(#clip-path-10);}.cls-14{clip-path:url(#clip-path-12);}.cls-15{clip-path:url(#clip-path-13);}</style>
+        <clipPath id="clip-path" transform="translate(-159 -918)">
+            <path class="cls-1" d="M183.48,992.36a18,18,0,1,1,18-18,18,18,0,0,1-18,18" />
+        </clipPath>
+        <clipPath id="clip-path-2" transform="translate(-159 -918)">
+            <rect class="cls-2" width="1440" height="1608" />
+        </clipPath>
+        <clipPath id="clip-path-3" transform="translate(-159 -918)">
+            <rect class="cls-2" x="164" y="954.9" width="38.96" height="38.96" />
+        </clipPath>
+        <clipPath id="clip-path-5" transform="translate(-159 -918)">
+            <rect class="cls-2" x="164" y="954" width="39" height="40" />
+        </clipPath>
+        <clipPath id="clip-path-6" transform="translate(-159 -918)">
+            <path class="cls-1" d="M183.48,957.9A16.48,16.48,0,1,1,167,974.38a16.48,16.48,0,0,1,16.48-16.48m0-3A19.48,19.48,0,1,0,203,974.38a19.5,19.5,0,0,0-19.48-19.48" />
+        </clipPath>
+        <clipPath id="clip-path-8" transform="translate(-159 -918)">
+            <path class="cls-1" d="M173.59,974.38a9.89,9.89,0,1,1,9.89,9.89,9.89,9.89,0,0,1-9.89-9.89" />
+        </clipPath>
+        <clipPath id="clip-path-10" transform="translate(-159 -918)">
+            <rect class="cls-2" x="179.44" y="923" width="8.07" height="8.08" />
+        </clipPath>
+        <clipPath id="clip-path-12" transform="translate(-159 -918)">
+            <rect class="cls-2" x="179" y="923" width="9" height="9" />
+        </clipPath>
+        <clipPath id="clip-path-13" transform="translate(-159 -918)">
+            <path class="cls-1" d="M179.44,927a4,4,0,1,1,4,4,4,4,0,0,1-4-4" />
+        </clipPath>
+    </defs>
+    <title>pin</title>
+    <g id="Capa_2" data-name="Capa 2">
+        <g id="Capa_1-2" data-name="Capa 1">
+            <g class="cls-3">
+                <g class="cls-4">
+                    <rect class="cls-5" x="1.5" y="33.4" width="45.96" height="45.96" />
+                </g>
+            </g>
+            <g class="cls-6">
+                <g class="cls-4">
+                    <g class="cls-7">
+                        <g class="cls-8">
+                            <g class="cls-9">
+                                <g class="cls-8">
+                                    <rect class="cls-10" y="31.9" width="48.96" height="48.96" />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g class="cls-11">
+                <g class="cls-4">
+                    <rect class="cls-10" x="9.59" y="41.49" width="29.78" height="29.78" />
+                </g>
+            </g>
+            <line class="cls-12" x1="24.48" y1="40.23" x2="24.48" y2="9.04" />
+            <g class="cls-13">
+                <g class="cls-4">
+                    <g class="cls-7">
+                        <g class="cls-14">
+                            <g class="cls-15">
+                                <g class="cls-14">
+                                    <rect class="cls-5" x="15.44" width="18.07" height="18.08" />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
