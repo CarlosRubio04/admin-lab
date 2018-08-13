@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AutorizacionService } from '../services/autorizacion.service'
+import { AutorizacionService } from '../services/autorizacion.service';
 
 @Component({
   selector: 'app-singin',
@@ -17,18 +17,6 @@ export class SinginComponent {
 
   registrar() {
   	this.autorizacionService.singin(this.registro.email, this.registro.password);
-  }
-  googleSingIn() {
-    this.autorizacionService.loginWithGoogle()
-      .then(rsp => {
-        console.log(rsp);
-        console.log('Todo bello');
-        this.router.navigate(['/complete']);
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log('Todo malo');
-      });
   } 
   close() {
     this.callBack = false;

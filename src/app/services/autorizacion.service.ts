@@ -3,33 +3,36 @@ import { AngularFireAuth } from 'angularfire2/auth/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
+import { MainService } from './main.service';
 
 @Injectable()
 export class AutorizacionService {
 	callBack:boolean = false;
 
-	constructor (private angularFireAuth: AngularFireAuth, private router:Router) {
+	constructor (private angularFireAuth: AngularFireAuth, private router:Router, private mainService:MainService) {
 		this.isLogged();
 	}
 
 	public login = (email, password) => {
 		this.angularFireAuth.auth.signInWithEmailAndPassword(email, password)
 			.then((response) => {
-				this.router.navigate(['/home']);
-				console.log('hola');
+				console.log(response);
 			})
 			.catch((error)=> {
-				alert('Error');
 				console.log(error);
 			})
 	};
 	public singin = (email, password) => {
 		this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password)
 			.then((response) => {
-				this.router.navigate(['/complete']);
+				var admin = {
+					'uId': response.uid,
+					'email': response.email,
+				}
+				this.mainService.saveAdmin(admin);
 			})
 			.catch((error)=> {
-				this.callBack = false;
+				console.log(error);
 			})
 	};
 

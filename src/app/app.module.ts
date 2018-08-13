@@ -23,12 +23,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SinginComponent } from './singin/singin.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 import { MainService } from './services/main.service';
 import { AutorizacionService } from './services/autorizacion.service';
 import { MyGuard } from './services/my-guard.service.guard';
 
 import { HomeModule } from './home/home.module';
+import { CalendarioModule } from './calendar/calendar.module';
 
 
 export const firebaseConfig = {
@@ -58,6 +60,7 @@ export const firebaseConfig = {
     RouterModule,
     AppRoutingModule,
     HomeModule,
+    CalendarioModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,

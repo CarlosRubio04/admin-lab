@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { AutorizacionService } from '../services/autorizacion.service';
 
 import {
     trigger,
@@ -39,9 +41,29 @@ export class HomeComponent implements OnInit {
         right: false
     };
 
-    
+    loggedUser: any = null;
+    message: string = 'Estamo cargado la Aplicación';
 
-    constructor() { }
+
+    constructor(private autorizacionService: AutorizacionService, private router: Router) {
+        this.autorizacionService.isLogged()
+            .subscribe((result) => {
+                if (result && result.uid) {
+                    this.loggedUser = this.autorizacionService.getUser().currentUser.displayName;
+                    this.message = 'Bienvenido';
+                    setTimeout(() => {
+                        this.router.navigate(['/calendar']);
+                    }, 1000);
+                } else {
+                    this.message = 'Para acceder a la aplicación debe estar registrado, si lo está inicie sesión';
+                    setTimeout(() => {
+                        this.router.navigate(['/login']);
+                    }, 500);
+                }
+            }, (error) => {
+                this.router.navigate(['/login']);
+        });
+    }
 
     ngOnInit() {}
 }

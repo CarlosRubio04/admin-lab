@@ -25,6 +25,10 @@ export class MainService { constructor(private afDB:AngularFireDatabase, private
         this.afDB.database.ref('users/' + user.uId).set(user);
     }
 
+    public saveAdmin(admin) {
+        this.afDB.database.ref('administrator/' + admin.uId).set(admin);
+    }
+
     public getUser(id) {
         return this.afDB.object('users/' + id);
     } 
