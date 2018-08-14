@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -31,6 +31,9 @@ import { MyGuard } from './services/my-guard.service.guard';
 
 import { HomeModule } from './home/home.module';
 import { CalendarioModule } from './calendar/calendar.module';
+import { EventsComponent } from './events/events.component';
+
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 
 export const firebaseConfig = {
@@ -49,7 +52,8 @@ export const firebaseConfig = {
     FooterComponent,
     LoginComponent,
     SinginComponent,
-    ProfileComponent
+    ProfileComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     HomeModule,
     CalendarioModule,
+    FlatpickrModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
@@ -69,7 +74,7 @@ export const firebaseConfig = {
     CalendarModule.forRoot(),
     CalendarUtilsModule
   ],
-  providers: [MainService, AutorizacionService, MyGuard],
+  providers: [MainService, AutorizacionService, MyGuard, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SinginComponent } from './singin/singin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { EventsComponent } from './events/events.component';
 
 import { MyGuard } from './services/my-guard.service.guard';
 
@@ -15,7 +16,8 @@ import { MyGuard } from './services/my-guard.service.guard';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
-    { path: 'calendar', component: CalendarComponent },
+    { path: 'calendar', component: CalendarComponent},
+    { path: 'events', component: EventsComponent},
     { path: 'login',            component: LoginComponent },
     { path: 'singin', component: SinginComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [MyGuard] },

@@ -29,14 +29,26 @@ export class MainService { constructor(private afDB:AngularFireDatabase, private
         this.afDB.database.ref('administrator/' + admin.uId).set(admin);
     }
 
+    public saveEvent(event) {
+        this.afDB.database.ref('events/' + event.id).set(event);
+    }
+
+    public editEvent(event) {
+        this.afDB.database.ref('events/' + event.id).update(event);
+    }
+
+    public getEvents() {
+        return this.afDB.list('events/');
+    }
+
     public getUser(id) {
         return this.afDB.object('users/' + id);
-    } 
+    }
 
     public editarCurso(curso) {
         this.afDB.database.ref('cursos/'+curso.id).set(curso);
     }
     public getCurso(id) {
         return this.afDB.object('cursos/'+id);
-    } 
+    }
 }

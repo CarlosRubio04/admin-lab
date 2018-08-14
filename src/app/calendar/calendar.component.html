@@ -20,6 +20,8 @@
   </div>
 </ng-template>
 
+<section class="calendar">
+
 <div class="row text-center">
   <div class="col-md-4">
     <div class="btn-group">
@@ -64,69 +66,4 @@
   </mwl-calendar-day-view>
 </div>
 
-<br>
-<br>
-<br>
-
-<h3>
-  Edit events
-  <button class="btn btn-primary pull-right" (click)="addEvent()">
-    Add new
-  </button>
-  <div class="clearfix"></div>
-</h3>
-
-<table class="table table-bordered">
-
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Primary color</th>
-      <th>Secondary color</th>
-      <th>Starts at</th>
-      <th>Ends at</th>
-      <th>Remove</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let event of events; let index = index">
-      <td>
-        <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()">
-      </td>
-      <td>
-        <input type="color" [(ngModel)]="event.color.primary" (change)="refresh.next()">
-      </td>
-      <td>
-        <input type="color" [(ngModel)]="event.color.secondary" (change)="refresh.next()">
-      </td>
-      <!-- <td>
-        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start" (ngModelChange)="refresh.next()" [altInput]="true"
-          [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set">
-      </td>
-      <td>
-        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end" (ngModelChange)="refresh.next()" [altInput]="true"
-          [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set">
-      </td> -->
-      <td>
-        <!-- <input type="date" class="form-control" [(ngModel)]="event.start" (ngModelChange)="refresh.next()"> -->
-        <!-- <div class="input-group date">
-            <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="event.start" (ngModelChange)="refresh.next()" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar">
-                <i class="fa fa-calendar" aria-hidden="true"></i>
-              </span>
-            </span>
-        </div> -->
-      </td>
-      <td>
-        <input type="date" class="form-control" [(ngModel)]="event.end" (ngModelChange)="refresh.next()">
-      </td>
-      <td>
-        <button class="btn btn-danger" (click)="events.splice(index, 1); refresh.next()">
-          Delete
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+</section>

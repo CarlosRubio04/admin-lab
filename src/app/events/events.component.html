@@ -1,0 +1,95 @@
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Editat Evento</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="event.title" placeholder="Titulo">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="starDay" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
+        dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha de Inicio">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="endDay" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
+        dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha Final">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="event.clase" placeholder="Clase">
+    </div>
+    <div class="form-group">
+      <input type="number" class="form-control" [(ngModel)]="event.cupos" placeholder="Cupos">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="event.video" placeholder="Video">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="event.inscripcion" placeholder="Inscripción">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="editEvent();close()">Guardar</button>
+  </div>
+</ng-template>
+
+<section class="events">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Agragar nuevo evento</h1>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 form-group">
+        <input type="text" class="form-control" [(ngModel)]="event.title" placeholder="Titulo">
+      </div>
+      <div class="col-md-4 form-group">
+        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="starDay" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
+          dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha de Inicio">
+      </div>
+      <div class="col-md-4 form-group">
+        <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="endDay" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
+          dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Fecha Final">
+      </div>
+      <div class="col-md-4 form-group">
+        <input type="text" class="form-control" [(ngModel)]="event.clase" placeholder="Clase">
+      </div>
+      <div class="col-md-4 form-group">
+        <input type="number" class="form-control" [(ngModel)]="event.cupos" placeholder="Cupos">
+      </div>
+      <div class="col-md-4 form-group">
+        <input type="text" class="form-control" [(ngModel)]="event.video" placeholder="Video">
+      </div>
+      <div class="col-md-4 form-group">
+        <input type="text" class="form-control" [(ngModel)]="event.inscripcion" placeholder="Inscripción">
+      </div>
+      <div class="col-md-4 form-group">
+        <button class="btn btn-success" (click)="addEvent()">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Editar Eventos creados</h1>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let event of events">
+        <p>{{ event.title }}</p>
+        <p>{{ event.start }}</p>
+        <button class="btn btn-info" (click)="handleEvent(event)">
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
