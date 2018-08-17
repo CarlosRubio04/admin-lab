@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'angular-calendar';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
-import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarComponent } from './calendar.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    NgbModalModule.forRoot(),
-    FlatpickrModule.forRoot(),
+    HttpClientModule,
     CalendarModule.forRoot()
   ],
-  declarations: [ CalendarComponent ],
-  exports: [ CalendarComponent ]
+  declarations: [CalendarComponent],
+  exports: [CalendarComponent]
 })
-export class CalendarioModule {}
+export class CalendarioModule { }

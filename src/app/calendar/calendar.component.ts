@@ -1,101 +1,96 @@
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { CalendarEvent } from 'angular-calendar';
 import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  TemplateRef
-} from '@angular/core';
-import { MainService } from '../services/main.service';
-import {
+  isSameMonth,
+  isSameDay,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
   startOfDay,
   endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours
+  format
 } from 'date-fns';
-import { Subject } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
-import {
-  CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent
-} from 'angular-calendar';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3'
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF'
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
-  }
-};
+
+interface Film {
+  id: number;
+  title: string;
+  release_date: string;
+}
 
 @Component({
-  selector: 'app-calendar-component',
+  selector: 'mwl-demo-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./calendar.component.scss'],
-  templateUrl: './calendar.component.html'
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent {
-  
-
-  @ViewChild('modalContent') modalContent: TemplateRef<any>;
-
+export class CalendarComponent implements OnInit {
   view: string = 'month';
 
   viewDate: Date = new Date();
 
-  modalData: {
-    action: string;
-    event: CalendarEvent;
-  };
+  events$: Observable<Array<CalendarEvent<{ film: Film }>>>;
 
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      }
-    },
-    {
-      label: '<i class="fa fa-fw fa-times"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter(iEvent => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      }
-    }
-  ];
+  activeDayIsOpen: boolean = false;
 
-  refresh: Subject<any> = new Subject();
+  constructor(private http: HttpClient) { }
 
-  events: CalendarEvent[] = [];
-
-  event: any = {
-    title: 'Nuevo Envento',
-    start: startOfDay(new Date()),
-    end: endOfDay(new Date()),
-  };
-
-
-  activeDayIsOpen: boolean = true;
-
-  constructor(private modal: NgbModal, private mainService: MainService) {
-    mainService.getEvents().valueChanges().subscribe(events => {
-      this.events.push();
-    });
+  ngOnInit(): void {
+    this.fetchEvents();
   }
 
+  fetchEvents(): void {
+    const getStart: any = {
+      month: startOfMonth,
+      week: startOfWeek,
+      day: startOfDay
+    }[this.view];
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    const getEnd: any = {
+      month: endOfMonth,
+      week: endOfWeek,
+      day: endOfDay
+    }[this.view];
+
+    const params = new HttpParams()
+      .set(
+        'primary_release_date.gte',
+        format(getStart(this.viewDate), 'YYYY-MM-DD')
+      )
+      .set(
+        'primary_release_date.lte',
+        format(getEnd(this.viewDate), 'YYYY-MM-DD')
+      )
+      .set('api_key', '0ec33936a68018857d727958dca1424f');
+
+    this.events$ = this.http
+      .get('https://api.themoviedb.org/3/discover/movie', { params })
+      .pipe(
+        map(({ results }: { results: Film[] }) => {
+          return results.map((film: Film) => {
+            return {
+              title: film.title,
+              start: new Date(film.release_date),
+              meta: {
+                film
+              }
+            };
+          });
+        })
+      );
+  }
+
+  dayClicked({
+    date,
+    events
+  }: {
+      date: Date;
+      events: Array<CalendarEvent<{ film: Film }>>;
+    }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -109,38 +104,10 @@ export class CalendarComponent {
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd
-  }: CalendarEventTimesChangedEvent): void {
-    event.start = newStart;
-    event.end = newEnd;
-    this.handleEvent('Dropped or resized', event);
-    this.refresh.next();
-  }
-
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
-  }
-
-  saveEvent(event) {
-    this.mainService.saveEvent(event);
-  }
-
-  addEvent(): void {
-    this.events.push({
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      }
-    });
-    this.refresh.next();
+  eventClicked(event: CalendarEvent<{ film: Film }>): void {
+    window.open(
+      `https://www.themoviedb.org/movie/${event.meta.film.id}`,
+      '_blank'
+    );
   }
 }

@@ -7,52 +7,52 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <div class="col-md-4">
         <div class="btn-group">
           <div
-            class="btn btn-warning"
+            class="btn btn-primary"
             mwlCalendarPreviousView
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Anterior
+            Previous
           </div>
           <div
-            class="btn btn-outline-warning"
+            class="btn btn-outline-secondary"
             mwlCalendarToday
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Hoy
+            Today
           </div>
           <div
-            class="btn btn-warning"
+            class="btn btn-primary"
             mwlCalendarNextView
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Siguiente
+            Next
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle') }}</h3>
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
       </div>
       <div class="col-md-4">
         <div class="btn-group">
           <div
-            class="btn btn-warning"
+            class="btn btn-primary"
             (click)="viewChange.emit('month')"
             [class.active]="view === 'month'">
-            Mes
+            Month
           </div>
           <div
-            class="btn btn-warning"
+            class="btn btn-primary"
             (click)="viewChange.emit('week')"
             [class.active]="view === 'week'">
-            Semana
+            Week
           </div>
           <div
-            class="btn btn-warning"
+            class="btn btn-primary"
             (click)="viewChange.emit('day')"
             [class.active]="view === 'day'">
-            Día
+            Day
           </div>
         </div>
       </div>
