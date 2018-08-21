@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database/database';
-import {Http} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 
 
 @Injectable()
@@ -10,6 +10,8 @@ import {Http} from '@angular/http';
 export class MainService { constructor(private afDB:AngularFireDatabase, private http: Http) {}
     cursos: any = [];
     callBack: boolean = false;
+
+    API_END_POINT = 'https://laboratoriovivo-3d943.firebaseio.com';
 
     public getCursos() {
         return this.afDB.list('cursos/');
@@ -38,8 +40,11 @@ export class MainService { constructor(private afDB:AngularFireDatabase, private
     }
 
     public getEvents() {
-        return this.afDB.list('events/');
+        //return this.afDB.list('events/');
+        return this.http.get(this.API_END_POINT+'/events.json')
     }
+
+
 
     public getUser(id) {
         return this.afDB.object('users/' + id);

@@ -22,9 +22,9 @@ export class EventsComponent implements OnInit {
   };
 
   constructor(private modal: NgbModal, private mainService: MainService, public datepipe: DatePipe) { 
-    mainService.getEvents().valueChanges().subscribe(events => {
-      this.events = events;
-    });
+    // mainService.getEvents().valueChanges().subscribe(events => {
+    //   this.events = events;
+    // });
   }
 
   convertStarDay() {

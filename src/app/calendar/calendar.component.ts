@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { MainService } from '../services/main.service';
 import { map } from 'rxjs/operators';
 import { CalendarEvent } from 'angular-calendar';
 import {
@@ -37,7 +38,15 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  cosas;
+
+  constructor(private http: HttpClient, private mainService: MainService) {
+    mainService.getEvents()
+      .subscribe(events => {
+        this.cosas = events.json;
+        debugger;
+      });
+  }
 
   ngOnInit(): void {
     this.fetchEvents();
